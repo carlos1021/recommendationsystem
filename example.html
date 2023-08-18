@@ -43,6 +43,23 @@
   <div class="container">
     <h1>Recommendation System</h1>
     <p>A smart writing software designed to help you write distraction-free.</p>
+    
+    <!-- Add the "Start" button -->
+    <button id="startButton">Start</button>
   </div>
+  
+  <script>
+    // JavaScript for the animation and page transition
+    const startButton = document.getElementById('startButton');
+    
+    startButton.addEventListener('click', () => {
+      const container = document.querySelector('.container');
+      container.style.animation = 'fadeOut 1s forwards';
+      
+      setTimeout(() => {
+        window.location.href = 'new_page.html'; // Replace with the actual page name
+      }, 1000); // Transition after 1 second
+    });
+  </script>
 </body>
 </html>

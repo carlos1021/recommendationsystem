@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Page</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Let's find some synonyms!</h1>
+  </div>
+</body>
+</html>
+
+
+
+<script>
+    // JavaScript for the animation and page transition
+    const startButton = document.getElementById('startButton');
+    
+    startButton.addEventListener('click', () => {
+      const container = document.querySelector('.container');
+      container.style.animation = 'fadeOut 1s forwards';
+      
+      setTimeout(() => {
+        window.location.href = './new_page.html'; // Use the correct relative path
+      }, 1000); // Transition after 1 second
+    });
+  </script>
+  
