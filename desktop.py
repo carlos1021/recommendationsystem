@@ -1,32 +1,9 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter.messagebox import showinfo
-import time
-
-#Creating the window object
-window = tk.Tk()
-
-#Giving the window a title
-window.title("Recommendation System Desktop App")
-#Setting the window size
-window.geometry("600x400")
-#Creating a label object
-new_Label = tk.Label(window, text = "Vist the Recommendation System Desktop App to find synonyms for your favorite Pokemon.")
-
-#Place the label onto the window
-new_Label.grid(column= 0, row = 0)
-
-#Create a progress bar widget
-progress_bar = ttk.Progressbar(window, orient = "horizontal", length=300, maximum = 100, mode="determinate")
-#Place the progress bar widget onto the window
-progress_bar.grid(column = 0, row = 5)
 
 def update_progress_label():
     return f"Current Progress: {progress_bar['value']}%"
-
-value_label = ttk.Label(window, text=update_progress_label())
-value_label.grid(column=0, row=1, columnspan=2)
-
 
 def progress():
     if progress_bar['value'] < 100:
@@ -35,35 +12,78 @@ def progress():
     else:
         showinfo(message='The progress completed!')
 
+# Creating the window object
+window = tk.Tk()
+window.title("Recommendation System Desktop App")
+window.geometry("600x400")
+window.configure(bg="#f0f0f0")
 
+# Creating a frame for content
+content_frame = tk.Frame(window, bg="#f0f0f0")
+content_frame.pack(padx=20, pady=20, fill=tk.BOTH, expand=True)
 
+# Creating a label with enhanced styling
+new_Label = tk.Label(
+    content_frame,
+    text="Visit the Recommendation System Desktop App to find synonyms for your favorite Pokemon.",
+    font=("Arial", 14),
+    wraplength=500,
+    padx=20,
+    pady=20,
+    bg="#f0f0f0",
+)
+new_Label.pack(fill=tk.BOTH, expand=True)
 
-#Create start button
-start_button = ttk.Button(window, text = "START", command = progress)
-#Place the start button onto the window
-start_button.grid(column = 0, row = 8, padx = 10, pady = 10)
-#Create start button
-stop_button = ttk.Button(window, text = "STOP", command = progress_bar.stop)
-#Place the start button onto the window
-stop_button.grid(column = 2, row = 8, padx = 10, pady = 10)
+# Create a progress bar widget
+progress_bar = ttk.Progressbar(
+    content_frame, orient="horizontal", length=300, maximum=100, mode="determinate"
+)
+progress_bar.pack(pady=10)
 
+value_label = ttk.Label(
+    content_frame,
+    text=update_progress_label(),
+    font=("Arial", 12),
+    bg="#f0f0f0",
+)
+value_label.pack()
+
+# Create a frame for buttons
+button_frame = tk.Frame(content_frame, bg="#f0f0f0")
+button_frame.pack(pady=20)
+
+# Create start button with enhanced styling
+start_button = ttk.Button(
+    button_frame,
+    text="START",
+    command=progress,
+    style="Custom.TButton",
+)
+start_button.pack(side=tk.LEFT, padx=10)
+
+# Create stop button with enhanced styling
+stop_button = ttk.Button(
+    button_frame,
+    text="STOP",
+    command=progress_bar.stop,
+    style="Custom.TButton",
+)
+stop_button.pack(side=tk.LEFT, padx=10)
+
+# Create custom style for buttons
+style = ttk.Style()
+style.configure(
+    "Custom.TButton",
+    font=("Arial", 12),
+    padding=10,
+    relief="flat",
+    foreground="#ffffff",
+    background="#007acc",
+)
+style.map(
+    "Custom.TButton",
+    background=[("active", "#005a8e")],
+    foreground=[("active", "#ffffff")],
+)
 
 window.mainloop()
-
-
-
-
-
-
-
-
-# class Pokemon:
-#     def __init__(self):
-#         self.name = ""
-#         self.weight = 10
-#         self.type = "Water"
-
-# pikachu = Pokemon()
-# print(pikachu.type)
-# pikachu.type = "Electric"
-# print(pikachu.type)
