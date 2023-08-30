@@ -43,12 +43,12 @@ progress_bar = ttk.Progressbar(window, orient="horizontal", length=300, maximum=
 progress_bar.grid(column=0, row=5, columnspan=3, padx=20, pady=10)
 
 # Create a label to display progress percentage
-value_label = ttk.Label(window, text=update_progress_label(progress_bar['value']), font=("Helvetica", 12))
+value_label = ttk.Label(window, text=update_progress_label(progress_bar['value']), font=("Comic Sans", 12))
 value_label.grid(column=0, row=1, columnspan=3, padx=20, pady=10)
 
 # Style for the fancy button
 style = ttk.Style()
-style.configure("Fancy.TButton", font=("Helvetica", 12))
+style.configure("Fancy.TButton", font=("Comic Sans", 12))
 
 # Create start button with improved formatting
 start_button = create_fancy_button(window, "START", progress)
